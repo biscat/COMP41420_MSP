@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='addressbook.proto',
   package='tutorial',
-  serialized_pb=_b('\n\x11\x61\x64\x64ressbook.proto\x12\x08tutorial\"\xda\x01\n\x06Person\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\n\n\x02id\x18\x02 \x01(\x05\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12+\n\x05phone\x18\x04 \x03(\x0b\x32\x1c.tutorial.Person.PhoneNumber\x1aM\n\x0bPhoneNumber\x12\x0e\n\x06number\x18\x01 \x02(\t\x12.\n\x04type\x18\x02 \x01(\x0e\x32\x1a.tutorial.Person.PhoneType:\x04HOME\"+\n\tPhoneType\x12\n\n\x06MOBILE\x10\x00\x12\x08\n\x04HOME\x10\x01\x12\x08\n\x04WORK\x10\x02\"/\n\x0b\x41\x64\x64ressBook\x12 \n\x06person\x18\x01 \x03(\x0b\x32\x10.tutorial.Person\" \n\rReplyResponse\x12\x0f\n\x07message\x18\x01 \x02(\t2E\n\x0cLookUpPerson\x12\x35\n\x06LookUp\x12\x10.tutorial.Person\x1a\x17.tutorial.ReplyResponse\"\x00')
+  serialized_pb=_b('\n\x11\x61\x64\x64ressbook.proto\x12\x08tutorial\"\xda\x01\n\x06Person\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\n\n\x02id\x18\x02 \x01(\x05\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12+\n\x05phone\x18\x04 \x03(\x0b\x32\x1c.tutorial.Person.PhoneNumber\x1aM\n\x0bPhoneNumber\x12\x0e\n\x06number\x18\x01 \x02(\t\x12.\n\x04type\x18\x02 \x01(\x0e\x32\x1a.tutorial.Person.PhoneType:\x04HOME\"+\n\tPhoneType\x12\n\n\x06MOBILE\x10\x00\x12\x08\n\x04HOME\x10\x01\x12\x08\n\x04WORK\x10\x02\"/\n\x0b\x41\x64\x64ressBook\x12 \n\x06person\x18\x01 \x03(\x0b\x32\x10.tutorial.Person\" \n\rReplyResponse\x12\x0f\n\x07message\x18\x01 \x02(\t2E\n\x0cLookUpPerson\x12\x35\n\x06LookUp\x12\x10.tutorial.Person\x1a\x17.tutorial.ReplyResponse\"\x00\x32X\n\x14Write_Person_To_File\x12@\n\x0cWrite_Person\x12\x15.tutorial.AddressBook\x1a\x17.tutorial.ReplyResponse\"\x00')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -279,6 +279,49 @@ def early_adopter_create_LookUpPerson_stub(host, port):
   method_invocation_descriptions = {
     "LookUp": utilities.unary_unary_invocation_description(
       addressbook_pb2.Person.SerializeToString,
+      addressbook_pb2.ReplyResponse.FromString,
+    ),
+  }
+  return implementations.insecure_stub(method_invocation_descriptions, host, port)
+class EarlyAdopterWrite_Person_To_FileServicer(object):
+  """<fill me in later!>"""
+  __metaclass__ = abc.ABCMeta
+  @abc.abstractmethod
+  def Write_Person(self, request, context):
+    raise NotImplementedError()
+class EarlyAdopterWrite_Person_To_FileServer(object):
+  """<fill me in later!>"""
+  __metaclass__ = abc.ABCMeta
+  @abc.abstractmethod
+  def start(self):
+    raise NotImplementedError()
+  @abc.abstractmethod
+  def stop(self):
+    raise NotImplementedError()
+class EarlyAdopterWrite_Person_To_FileStub(object):
+  """<fill me in later!>"""
+  __metaclass__ = abc.ABCMeta
+  @abc.abstractmethod
+  def Write_Person(self, request):
+    raise NotImplementedError()
+  Write_Person.async = None
+def early_adopter_create_Write_Person_To_File_server(servicer, port, root_certificates, key_chain_pairs):
+  import addressbook_pb2
+  import addressbook_pb2
+  method_service_descriptions = {
+    "Write_Person": utilities.unary_unary_service_description(
+      servicer.Write_Person,
+      addressbook_pb2.AddressBook.FromString,
+      addressbook_pb2.ReplyResponse.SerializeToString,
+    ),
+  }
+  return implementations.secure_server(method_service_descriptions, port, root_certificates, key_chain_pairs)
+def early_adopter_create_Write_Person_To_File_stub(host, port):
+  import addressbook_pb2
+  import addressbook_pb2
+  method_invocation_descriptions = {
+    "Write_Person": utilities.unary_unary_invocation_description(
+      addressbook_pb2.AddressBook.SerializeToString,
       addressbook_pb2.ReplyResponse.FromString,
     ),
   }

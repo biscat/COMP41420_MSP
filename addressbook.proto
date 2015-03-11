@@ -3,6 +3,11 @@ package tutorial;
 service LookUpPerson {
     rpc LookUp(Person) returns (ReplyResponse) {}
 }
+
+service Write_Person_To_File {
+    rpc Write_Person(AddressBook) returns (ReplyResponse) {}
+}
+
 message Person {
   required string name = 1;
   optional int32 id = 2;
